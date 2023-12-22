@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>LOSIK Shoes and Clean</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/losik.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'img/losik.png' %}" alt="">
+        <span class="d-none d-lg-block">LOSIK SHOES</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+       
+        <li class="nav-item dropdown pe-3">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <img src="{% static 'img/losik.png' %}" alt="Profile" class="rounded-circle">
+                <span class="d-none d-md-block dropdown-toggle ps-2">{{user.username}}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+    
+                <li>
+                    <a class="dropdown-item d-flex align-items-center" href="{% url 'performlogout' %}">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+      
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+     
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'home' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+     
+<!-- data master start disini -->
+      <!-- <li class="nav-heading">Data Master <a href="youtube.com"></a></li> -->
+      <li class="nav-heading">
+        
+          Data Master
+    
+      </li>
+<!-- perawatan sidebar -->
+      <li class="nav-item">
+        <a class="nav-link collapsed " data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Perawatan</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'perawatan' %}">
+              <i class="bi bi-circle"></i><span>Data Perawatan</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'createperawatan' %}">
+              <i class="bi bi-circle"></i><span>Tambah Perawatan</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      <!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " data-bs-target="#pelanggan-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people-fill"></i><span>Pelanggan</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="pelanggan-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'pelanggan' %}">
+              <i class="bi bi-circle"></i><span>Data Pelanggan</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'createpelanggan' %}">
+              <i class="bi bi-circle"></i><span>Tambah Pelanggan</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      <!-- End Icons Nav -->
+
+      <li class="nav-heading">Transaksi</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " data-bs-target="#transaksi-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-minecart"></i><span>Transaksi</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="transaksi-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'transaksi' %}">
+              <i class="bi bi-circle"></i><span>Data Transaksi</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'createtransaksi' %}">
+              <i class="bi bi-circle"></i><span>Tambah Transaksi</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed show" data-bs-target="#dettransaksi-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Detail Transaksi</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="dettransaksi-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'detailtransaksi' %}" class="active">
+              <i class="bi bi-circle"></i><span>Data Detail Transaksi</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'createdetailtransaksi' %}" >
+              <i class="bi bi-circle"></i><span>Tambah Detail Transaksi</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed " data-bs-target="#pembayaran-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-coin"></i><span>Pembayaran</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="pembayaran-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'pembayaran' %}">
+              <i class="bi bi-circle"></i><span>Data Pembayaran</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'createpembayaran' %}">
+              <i class="bi bi-circle"></i><span>Tambah Pembayaran</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      {% if is_owner %}
+      <li class="nav-item">
+        <a class="nav-link collapsed " data-bs-target="#laporan-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-graph-up"></i><span>Laporan</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="laporan-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'laporanpendapatanbulanan' %}">
+              <i class="bi bi-circle"></i><span>Laporan Pendapatan</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'laporan_perawatan_terlaris' %}">
+              <i class="bi bi-circle"></i><span>Perawatan Terlaris</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      {% endif %}
+      
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Detail Transaksi</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item">Detail Transaksi</li>
+          <li class="breadcrumb-item active">Data Detail Transaksi</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Data Detail Transaksi</h5>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">Nomor Nota</th>
+                    <th scope="col">ID Detail Transaksi</th>
+                    <th scope="col">ID Perawatan</th>
+                    <th scope="col">Deskripsi Sepatu</th>
+                    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in detailtransaksiobj %}
+                  <tr>
+                      <td>{{item.nomor_nota}}</td>
+                      <td>{{item.id_detail_transaksi}}</td>
+                      <td>{{ item.id_perawatan.id_perawatan }} - {{ item.id_perawatan.jenis_perawatan }}</td>
+                      <td>{{item.deskripsi_sepatu}}</td>
+                      <td>
+                        <a href="{% url 'updatedetailtransaksi' item.id_detail_transaksi %}">
+                          <button type="button" class="btn btn-warning">Update</button>
+                        </a>
+                        <a>
+                          {% if is_owner %}
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{ item.id_detail_transaksi }}">
+                            Delete
+                          </button>
+                          {% endif %}
+
+                        </a>
+                      </td>
+                      <div class="modal" id="delete-{{ item.id_detail_transaksi }}">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <div class="modal-title">
+                                <h3>Delete Detail Transaksi</h3>
+                              </div>
+                            </div>
+                            <div class="modal-body">
+                              Apakah anda ingin menghapus data berikut?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                              {% if is_owner %}
+                              <a href="{% url 'deletedetailtransaksi' item.id_detail_transaksi %}" class="btn btn-danger">Delete</a>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/apexcharts/apexcharts.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/chart.js/chart.umd.js' %}"></script>
+  <script src="{% static 'vendor/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'vendor/quill/quill.min.js' %}"></script>
+  <script src="{% static 'vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static 'vendor/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+
+</html>

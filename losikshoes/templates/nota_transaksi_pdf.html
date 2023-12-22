@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota Transaksi</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+        }
+        table, td, th {
+            border: 1px solid;
+            text-align: center;
+            padding: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Nota Transaksi</h1>
+
+    <!-- Informasi di luar tabel -->
+    <div style="margin-left: 20px;">
+        {% for row in rows %}
+            {% if forloop.first %}
+                <p><b>Nomor Nota:</b> {{ row.nomor_nota }}</p>
+                <p><b>Nama Pelanggan:</b> {{ row.nama_pelanggan }}</p>
+                <p><b>Status:</b> {{ row.status }}</p>
+                <p><b>Tanggal Transaksi:</b> {{ row.tanggal_transaksi }}</p>
+                <p><b>Metode Pembayaran:</b> {{ row.metode_pembayaran }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jenis Perawatan</th>
+                <th>Deskripsi Sepatu</th>
+                <th>Harga Perawatan</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row.jenis_perawatan }}</td>
+                    <td>{{ row.deskripsi_sepatu }}</td>
+                    <td>{{ row.harga_perawatan }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: right;"><b>Grand Total</b></td>
+                <td class="currency">{{ total_transaction|floatformat:0 }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

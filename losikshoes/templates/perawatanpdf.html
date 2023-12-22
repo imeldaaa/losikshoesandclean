@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laporan Produk Perawatan Terlaris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        thead {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Laporan Produk Perawatan Terlaris</h1>
+    <h3 style="text-align: center;">Periode: {{ tanggalmulai|date:"F Y" }} - {{ tanggalakhir|date:"F Y" }}</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jenis Perawatan</th>
+                <th>Jumlah Pemesanan</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for perawatan in perawatan_terlaris %}
+            <tr>
+                <td>{{ perawatan.0 }}</td>
+                <td>{{ perawatan.1 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
